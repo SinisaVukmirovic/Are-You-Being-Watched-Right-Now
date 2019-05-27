@@ -1,0 +1,156 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #333;
+    color: #eee;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    background: url('img/earth.jpg');
+    background-size: cover;
+}
+
+#issMap { 
+    height: 90%; 
+    width: 90%;
+    z-index: 1;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%; height: 100%;
+    background: url('img/earth.jpg');
+    background-size: cover;
+    color: #eee;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding: 5rem;
+    animation: zoomIn 10s linear alternate infinite;
+}
+
+.overlay h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    text-shadow: 0 0 10px #000;
+    margin: 1rem;
+    letter-spacing: 25px;
+    opacity: 0;
+    animation: fadeDrop 1s ease-out 2s forwards;
+}
+    .overlay h2:nth-child(3) {
+        animation-delay: 4s;
+    }
+    .overlay h2:nth-child(4) {
+        animation-delay: 6s;
+    }
+
+.overlay img {
+    position: absolute;
+    top: 10rem;
+    left: 1rem;
+    width: 50%;
+    animation: slide 10s ease-in-out alternate infinite;
+}
+
+.btn {
+    background: #eee;
+    color: #000;
+    letter-spacing: 5px;
+    padding: 1rem 3rem;
+    margin: 3rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards 8s;
+}
+    .btn:hover {
+        background: #fff;
+    }
+
+.js-fade-out {
+    animation: fadeOut 3s linear forwards;
+}
+
+/* animations */
+@keyframes fadeDrop {
+    from {
+        transform: translateY(-3rem);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slide {
+    to {
+        transform: translate(5rem, -5rem);
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+/* media queries for smaller screen sizes */
+@media screen and (min-width: 568px) and (max-width: 900px) {
+    html {
+        font-size: 12px;
+    }
+    .overlay {
+        padding: 1rem;
+    }
+    .overlay h2 {
+        font-size: 1.5rem;
+        letter-spacing: 10px;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 567px) {
+    html {
+        font-size: 10px;
+    }
+    body {
+        background-position: center;
+    }
+    .overlay {
+        justify-content: center;
+        align-items: center;
+        background-position: center;
+    }
+    .overlay h2 {
+        font-size: 1.5rem;
+        letter-spacing: 5px;
+        margin: .5rem;
+        text-shadow: none;
+    }
+    .overlay img {
+        width: 70%;
+    }
+    h3.info {
+        font-size: .8rem;
+    }
+}
