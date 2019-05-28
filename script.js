@@ -48,7 +48,7 @@ async function getISS() {
     }
 }    
 
-getISS();
+setTimeout(getISS(), 3000);
 
 // to update satelite possition every second
 setInterval(getISS, 1000);
